@@ -884,6 +884,8 @@ section {
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
+    z-index: 1; /* Tambahkan ini */
+    cursor: pointer; /* Tambahkan ini biar kelihatan bisa diklik */
 }
 
 .cert-card::before {
@@ -902,6 +904,7 @@ section {
 }
 
 .cert-card:hover {
+    z-index: 2;
     transform: translateY(-10px);
     border-color: var(--accent);
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
