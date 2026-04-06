@@ -862,17 +862,15 @@ section {
 .certificates {
     background: var(--dark);
     color: white;
-}
-
-.certificates .section-title h2,
-.certificates .section-title p {
-    color: white;
+    position: relative; /* Tambahkan */
+    z-index: 1; /* Tambahkan */
 }
 
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    position: relative; /* Tambahkan */
 }
 
 .cert-card {
@@ -881,13 +879,14 @@ section {
     border-radius: 15px;
     padding: 2rem;
     text-align: center;
-    transition: all 0.3s;
+    transition: all 0.3s ease; /* Tambahkan ease */
     position: relative;
     overflow: hidden;
-    z-index: 1; /* Tambahkan ini */
-    cursor: pointer; /* Tambahkan ini biar kelihatan bisa diklik */
+    cursor: pointer; /* Penting: biar tahu bisa di-hover */
+    z-index: 1; /* Penting */
 }
 
+/* Pastikan ::before tidak menghalangi hover */
 .cert-card::before {
     content: '';
     position: absolute;
@@ -897,6 +896,8 @@ section {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
     transition: left 0.5s;
+    z-index: -1; /* Pastikan di belakang konten */
+    pointer-events: none; /* Penting: biar tidak intercept mouse events */
 }
 
 .cert-card:hover::before {
@@ -904,17 +905,18 @@ section {
 }
 
 .cert-card:hover {
-    z-index: 2;
     transform: translateY(-10px);
     border-color: var(--accent);
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 10; /* Naikkan z-index saat hover */
 }
 
 .cert-icon {
     font-size: 3rem;
     color: var(--accent);
     margin-bottom: 1rem;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
+    display: inline-block; /* Penting untuk transform */
 }
 
 .cert-card:hover .cert-icon {
