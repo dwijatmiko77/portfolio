@@ -533,8 +533,9 @@
         }, observerOptions);
 
         // Observe all animated elements
-        document.querySelectorAll('.animate-on-scroll, .slide-left, .slide-right, .slide-up, .scale-in, .skill-card').forEach((el) => {
-            observer.observe(el);
+        // Menjadi ini:
+        document.querySelectorAll('.animate-on-scroll, .slide-left, .slide-right, .slide-up, .scale-in, .skill-card, .cert-card').forEach((el) => {
+        observer.observe(el);
         });
 
         // Navbar scroll effect
